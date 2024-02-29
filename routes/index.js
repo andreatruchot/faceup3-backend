@@ -5,7 +5,7 @@ const fs = require('fs');
 const uniqid = require('uniqid');
 
 router.post('/upload', async (req, res) => {
-  const photoPath = `./tmp/${uniqid()}.jpg`;
+  const photoPath = `/tmp/${uniqid()}.jpg`;
 
   await req.files.photoFromFront.mv(photoPath);
   const resultCloudinary = await cloudinary.uploader.upload(photoPath);
