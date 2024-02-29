@@ -14,6 +14,8 @@ router.post('/upload', async (req, res) => {
   fs.unlinkSync(photoPath);
 
   res.json({ result: true, url: resultCloudinary.secure_url });
+ }else{
+  res.json({result: false, error: resultMove})
  }
    
 });

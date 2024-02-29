@@ -11,9 +11,9 @@ var indexRouter = require('./routes/index');
 var app = express();
 
 
-const cloudinary = require('cloudinary').v2;
+//const cloudinary = require('cloudinary').v2;
 
-cloudinary.config();
+//cloudinary.config();
 
 const cors = require('cors');
 app.use(cors());
