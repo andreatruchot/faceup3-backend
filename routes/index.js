@@ -6,14 +6,16 @@ const uniqid = require('uniqid');
 
 router.post('/upload', async (req, res) => {
   const photoPath = `/tmp/${uniqid()}.jpg`;
+ const resultMove =  await req.files.photoFromFront.mv(photoPath);
+ if(!resultMove){
 
-  await req.files.photoFromFront.mv(photoPath);
   const resultCloudinary = await cloudinary.uploader.upload(photoPath);
-
   // Suppression du fichier temporaire après l'upload
   fs.unlinkSync(photoPath);
 
   res.json({ result: true, url: resultCloudinary.secure_url });
+ }
+   
 });
 
 module.exports = router;
